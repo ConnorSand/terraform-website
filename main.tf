@@ -10,3 +10,14 @@ terraform {
 provider "aws" {
   region = "ap-southeast-2"
 }
+
+# ./terraform.tf
+
+variable "domain_name" {
+  type = string
+}
+
+module "website" {
+  source = "./.deploy/terraform/static-site"
+  domain_name = var.domain_name
+}
